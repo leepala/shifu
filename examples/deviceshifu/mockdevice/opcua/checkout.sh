@@ -28,7 +28,6 @@ kubectl exec -it -n deviceshifu nginx -- curl -X POST -d "{\"value\":\"${writeDa
 out=$(kubectl exec -it -n deviceshifu nginx -- curl deviceshifu-opcua/writable_value)
 if [[ $out -ne $writeData ]]; then
     echo "write failed"
+    echo $out
     exit 1
 fi
-
-echo "write success"
